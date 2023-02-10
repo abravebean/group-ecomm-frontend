@@ -1,4 +1,5 @@
 ## Amazon E-commerce Store
+Netlify link : [a link](https://cozy-otter-f10cb6.netlify.app/)
 Group:
 Kelly McDonald
 Alyssa Cervantes
