@@ -7,21 +7,10 @@ import SignupPage from "../../pages/Signup/SignupPage";
 import LoginPage from "../../pages/Login/LoginPage";
 import ProtectedRoute from "../Protected-Route";
 import { getToken } from "../../services/tokenService";
+import Checkout from "../../pages/Checkout/Checkout";
 
 const Main = (props) => {
-  // const [products, setProducts] = useState(null);
-
-  // const URL = "https://group-3proj.herokuapp.com/product";
-
-  // const getProducts = async () => {
-  //   const res = await fetch(URL);
-  //   const data = await res.json();
-  //   setProducts(data);
-  // };
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
+  const [count, setCount] = useState(1);
 
   return (
     <main>
@@ -30,7 +19,11 @@ const Main = (props) => {
           path="/"
           element={
             <ProtectedRoute user={props.user}>
-              <Index products={props.products} />
+              <Index
+                count={count}
+                setCount={setCount}
+                products={props.products}
+              />
             </ProtectedRoute>
           }
         />
@@ -38,7 +31,11 @@ const Main = (props) => {
           path="/product/:id"
           element={
             <ProtectedRoute user={props.user}>
-              <Show products={props.products} />
+              <Show
+                count={count}
+                setCount={setCount}
+                products={props.products}
+              />
             </ProtectedRoute>
           }
         />
@@ -46,10 +43,11 @@ const Main = (props) => {
           path="/cart"
           element={
             <ProtectedRoute user={props.user}>
-              <Cart />
+              <Cart count={count} setCount={setCount} />
             </ProtectedRoute>
           }
         />
+        <Route path="/checkout" element={<Checkout />} />
 
         <Route path="/signup" element={<SignupPage {...props} />} />
         <Route path="/login" element={<LoginPage {...props} />} />

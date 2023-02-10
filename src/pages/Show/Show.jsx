@@ -1,41 +1,47 @@
 import "./Show.css";
-import { useNavigate, useParams } from "react-router";
-import StarIcon from '@mui/icons-material/Star';
+import { useParams } from "react-router";
+
 
 function Show({ products }) {
 
   const { id } = useParams();
   const product = products.find((product) => product._id === id);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   return (
     <div className="allproducts">
       <div className="container">
+
         <div className="left">
           <img className="product-img" src={product.img} alt={product.Title} />
         </div>
 
         <div className="center">
           <h1 className="product-title">{product.Title}</h1>
-          <StarIcon id="star-rating"/> 
-          <StarIcon id="star-rating"/> 
-          <StarIcon id="star-rating"/> 
-          <StarIcon id="star-rating"/> 
+         
 
-          <p className="product-price">${product.Price}</p>
+          <p className="product-price">Price: ${product.Price}</p>
 
           <div className="paragraph-two">
-          <p className="product-description">{product.desc}</p>
+          <strong className="about-item">About this item: </strong> 
+          <p className="product-desc">{product.desc}</p>
         </div>
         </div>
 
         <div className="right">
-          <h1>Buy now</h1>
-          <button>Add to cart</button>
+          
+          <p className="free-returns">FREE Returns</p>
+          <p className="free-delivery">FREE delivery January 26-30.</p>
+          <p className="order-soon">Only 1 left in stock - order soon</p>
+
+          
+        
+          <a href={product.Stripelink}>Purchase Now</a>
+          </div>
         </div>
       </div>
-    </div>
+   
 
 
 

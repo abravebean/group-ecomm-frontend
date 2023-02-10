@@ -2,7 +2,6 @@ import "./App.css";
 import "./index.css";
 import Nav from "./components/Nav/Nav";
 import Main from "./components/Main/Main";
-import Home from "./components/Home/Home";
 import { useState, useEffect } from "react";
 
 import { getUserFromToken } from "./services/tokenService";
@@ -36,15 +35,21 @@ function App(props) {
     getProducts();
   }, []);
 
+  function handleSearch(input) {
+    input === ""
+      ? getProducts()
+      : setProducts(products.filter((p) => p.Title === input));
+  }
+
   return (
     <div className="App">
       <Nav
+        handleSearch={handleSearch}
         user={userState.user}
         handleLogout={handleLogout}
         products={products}
         setProducts={setProducts}
       />
-      {/* <Home /> */}
       <Main
         user={userState.user}
         handleSignupAndLogIn={handleSignupAndLogIn}
