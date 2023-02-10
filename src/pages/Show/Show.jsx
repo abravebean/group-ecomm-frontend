@@ -30,8 +30,15 @@ function Show({ products }) {
         </div>
 
         <div className="right">
-          <h1>Buy now</h1>
-          <button>Add to cart</button>
+          
+          <p className="free-returns">FREE Returns</p>
+          <p className="free-delivery">FREE delivery January 26-30.</p>
+          <p className="order-soon">Only 1 left in stock - order soon</p>
+
+          
+        
+          <a href={product.Stripelink}>Purchase Now</a>
+          </div>
         </div>
       </div>
    
